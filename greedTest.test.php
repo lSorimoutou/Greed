@@ -8,6 +8,7 @@ include 'greed.class.php';
  */
 class GreedTest extends TestCase
 {
+    /* score => (valeur => occurences) */
     private const SCORE_RULES = array(
         100 => array(1=>1),
         50 => array(5=>1),
