@@ -6,7 +6,6 @@ include 'greed.class.php';
 
 /**
  * GreedTest
- * @group group
  */
 class GreedTest extends TestCase
 {
