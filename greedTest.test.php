@@ -1,5 +1,7 @@
 <?php
+
 use PHPUnit\Framework\TestCase;
+
 include 'greed.class.php';
 
 /**
@@ -10,14 +12,14 @@ class GreedTest extends TestCase
 {
     /* score => (valeur => occurences) */
     private const SCORE_RULES = array(
-        100 => array(1=>1),
-        50 => array(5=>1),
-        1000 => array(1=>3),
-        200 => array(2=>3),
-        300 => array(3=>3),
-        400 => array(4=>3),
-        500 => array(5=>3),
-        600 => array(6=>3)
+        100 => array(1 => 1),
+        50 => array(5 => 1),
+        1000 => array(1 => 3),
+        200 => array(2 => 3),
+        300 => array(3 => 3),
+        400 => array(4 => 3),
+        500 => array(5 => 3),
+        600 => array(6 => 3)
     );
 
     /** @test_error_arg 
@@ -27,7 +29,7 @@ class GreedTest extends TestCase
     {
         $greedTest = new Greed(self::SCORE_RULES);
         $this->expectException(InvalidArgumentEXCEPTION::class);
-        $greedTest->score(array(1,2,3,4,5,6,7));
+        $greedTest->score(array(1, 2, 3, 4, 5, 6, 7));
     }
 
     /** @test_base1 
@@ -54,7 +56,7 @@ class GreedTest extends TestCase
     public function test_base3()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(1,1,1)), 1000);
+        $this->assertSame($greedTest->score(array(1, 1, 1)), 1000);
     }
 
     /** @test_base4
@@ -63,7 +65,7 @@ class GreedTest extends TestCase
     public function test_base4()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(2,2,2)), 200);
+        $this->assertSame($greedTest->score(array(2, 2, 2)), 200);
     }
 
     /** @test_base5
@@ -72,7 +74,7 @@ class GreedTest extends TestCase
     public function test_base5()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(3,3,3)), 300);
+        $this->assertSame($greedTest->score(array(3, 3, 3)), 300);
     }
 
     /** @test_base6
@@ -81,7 +83,7 @@ class GreedTest extends TestCase
     public function test_base6()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(4,4,4)), 400);
+        $this->assertSame($greedTest->score(array(4, 4, 4)), 400);
     }
 
     /** @test_base7
@@ -90,7 +92,7 @@ class GreedTest extends TestCase
     public function test_base7()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(5,5,5)), 500);
+        $this->assertSame($greedTest->score(array(5, 5, 5)), 500);
     }
 
     /** @test_base8
@@ -99,7 +101,7 @@ class GreedTest extends TestCase
     public function test_base8()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(6,6,6)), 600);
+        $this->assertSame($greedTest->score(array(6, 6, 6)), 600);
     }
 
     /** @test_straight
@@ -108,8 +110,8 @@ class GreedTest extends TestCase
     public function test_straight()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(1,2,3,4,5,6)), 1200);
-    }    
+        $this->assertSame($greedTest->score(array(1, 2, 3, 4, 5, 6)), 1200);
+    }
 
 
     /** @test_three_pairs
@@ -118,8 +120,8 @@ class GreedTest extends TestCase
     public function test_three_pairs()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(2,2,3,3,4,4)), 800);
-    }    
+        $this->assertSame($greedTest->score(array(2, 2, 3, 3, 4, 4)), 800);
+    }
 
     /** @test_special1
      * Cas ou on a 4 fois deux (score multiplié par 2)
@@ -127,7 +129,7 @@ class GreedTest extends TestCase
     public function test_special1()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(2,2,2,2)), 400);
+        $this->assertSame($greedTest->score(array(2, 2, 2, 2)), 400);
     }
 
     /** @test_special2
@@ -136,7 +138,7 @@ class GreedTest extends TestCase
     public function test_special2()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(2,2,2,2,2)), 800);
+        $this->assertSame($greedTest->score(array(2, 2, 2, 2, 2)), 800);
     }
 
     /** @test_special3
@@ -145,7 +147,7 @@ class GreedTest extends TestCase
     public function test_special3()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(2,2,2,2,2,2)), 1600);
+        $this->assertSame($greedTest->score(array(2, 2, 2, 2, 2, 2)), 1600);
     }
 
     /** @test_normal1
@@ -154,7 +156,7 @@ class GreedTest extends TestCase
     public function test_normal1()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(2,2,2,4,4,4)), 600);
+        $this->assertSame($greedTest->score(array(2, 2, 2, 4, 4, 4)), 600);
     }
 
     /** @test_normal2
@@ -163,7 +165,6 @@ class GreedTest extends TestCase
     public function test_normal2()
     {
         $greedTest = new Greed(self::SCORE_RULES);
-        $this->assertSame($greedTest->score(array(3,2,2,1,4,5)), 150);
+        $this->assertSame($greedTest->score(array(3, 2, 2, 1, 4, 5)), 150);
     }
-
 }
